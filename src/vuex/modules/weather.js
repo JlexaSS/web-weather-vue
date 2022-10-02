@@ -6,7 +6,7 @@ const weather = {
     },
     getters: {
         WEATHER(state) {
-            return state.weather
+            return state.weather.days
         },
         CURRENT_WEATHER(state) {
             return state.weather.currentConditions
@@ -19,7 +19,8 @@ const weather = {
     },
     actions: {
         GET_WEATHER_FROM_API({commit}, coords) {
-            return axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${coords.lat},${coords.lng}?unitGroup=us&key=NYESDBMPHZKGSTH6UCQ34NGV4&contentType=json`,
+            const date = new Date()
+            return axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${coords.lat},${coords.lng}/${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}/${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()+6}/?unitGroup=us&key=NYESDBMPHZKGSTH6UCQ34NGV4&contentType=json`,
                 {
                     method: "GET",
                 })
