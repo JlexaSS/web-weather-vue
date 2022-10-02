@@ -119,6 +119,7 @@ export default {
         font-size: 35px;
         background-color: #0F0F0F;
         transition: all .5s;
+        z-index: 1;
       }
       li + li{
         margin: 60px 0 0 0;
@@ -134,6 +135,7 @@ export default {
       background-color: transparent;
       border: none;
       cursor: pointer;
+      z-index: 2;
       &-line{
         position: absolute;
         left: 0;
