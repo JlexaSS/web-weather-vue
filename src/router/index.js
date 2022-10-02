@@ -3,6 +3,7 @@ import VueRouter from "vue-router"
 import Weather from "@/Views/Weather";
 import News from "@/Views/news/News";
 import NewsItem from "@/Views/news/NewsItem";
+import About from "@/Views/About";
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
         name: 'NewsItem',
         component: NewsItem,
         props: true
+    },
+    {
+        path: '/about',
+        name: "About",
+        component: About
     }
 ]
 

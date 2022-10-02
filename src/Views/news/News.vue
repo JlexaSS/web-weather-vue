@@ -1,7 +1,7 @@
 <template>
   <div class="news">
     <div class="container">
-      <Header/>
+      <Header class="header-p"/>
       <div
         class="lds-dual-ring"
         v-if="isLoadingTopPosts"
@@ -163,6 +163,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.header-p{
+  padding-bottom: 40px;
+}
 .news {
   height: 100vh;
   background-image: url('@/assets/images/news.jpg');

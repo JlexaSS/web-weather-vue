@@ -10,7 +10,7 @@
       >
         <li class="header-link"><router-link to="/">Погода</router-link></li>
         <li class="header-link"><router-link to="/news">Новости</router-link></li>
-        <li class="header-link"><router-link to="/">О нас</router-link></li>
+        <li class="header-link"><router-link to="/about">О нас</router-link></li>
       </ul>
       <a href="mailto:jowe.jlexa@mail.ru" class="mail">jowe.jlexa@mail.ru</a>
       <button
@@ -48,7 +48,7 @@ export default {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 70px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     &-content {
       display: flex;
       justify-content: space-between;
