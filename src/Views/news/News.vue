@@ -2,7 +2,15 @@
   <div class="news">
     <div class="container">
       <Header/>
-      <div class="news-content">
+      <div
+        class="lds-dual-ring"
+        v-if="isLoadingTopPosts"
+      >
+      </div>
+      <div
+        class="news-content"
+        v-else
+      >
         <div class="news-top">
           <router-link class="news-top__link" :to="'/news/'+TOP_NEWS[0].id">
             <div class="news-top__block">
@@ -99,6 +107,11 @@
               </div>
             </router-link>
           </div>
+          <div
+              class="lds-dual-ring"
+              v-if="isLoadingBottomPosts"
+          >
+          </div>
         </div>
       </div>
     </div>
@@ -114,7 +127,9 @@ export default {
   components: {Header},
   data() {
     return {
-      page: 2
+      page: 2,
+      isLoadingTopPosts: true,
+      isLoadingBottomPosts: false
     }
   },
   computed: {
@@ -126,6 +141,7 @@ export default {
   methods: {
     ...mapActions(['GET_NEWS_FROM_API']),
     scroll () {
+      this.isLoadingBottomPosts = true
       window.onscroll = () => {
         let isBottomOfWindow =
             document.documentElement.scrollHeight - document.documentElement.scrollTop ===
@@ -133,12 +149,14 @@ export default {
         if (isBottomOfWindow) {
           this.GET_NEWS_FROM_API(this.page)
           this.page++
+          this.isLoadingBottomPosts = false
         }
       }
     }
   },
   mounted() {
     this.GET_NEWS_FROM_API()
+    this.isLoadingTopPosts = false
     this.scroll(this.page)
   }
 }
@@ -323,7 +341,31 @@ export default {
     transform: scale(1.5);
   }
 }
-
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin: 170px 45% 0;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @media (max-width: 1200px) {
   .news-top {
     justify-content: center;

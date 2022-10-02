@@ -7,7 +7,15 @@
           <h1 class="weather-title">
             Погода на сегодня:
           </h1>
-          <div class="weather-states">
+          <div
+            class="lds-dual-ring"
+            v-if="isLoading"
+          >
+          </div>
+          <div
+            class="weather-states"
+            v-else
+          >
             <img :src="require('../assets/images/weather/'+CURRENT_WEATHER.icon+'.svg')" alt="weather" class="weather-icon">
             <table>
               <tr>
@@ -36,6 +44,11 @@ export default {
   components: {
     Header
   },
+  data() {
+    return {
+      isLoading: true
+    }
+  },
   computed: {
     ...mapGetters([
         'CURRENT_WEATHER'
@@ -49,6 +62,7 @@ export default {
   mounted() {
     this.$getLocation().then(coords => {
       this.GET_WEATHER_FROM_API(coords)
+      this.isLoading = false
     })
 
   }
@@ -112,6 +126,32 @@ export default {
       width: 90px;
     }
   }
+  .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: 170px auto 0;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   @media(max-width: 1125px){
     .weather{
       &-title{
