@@ -9,7 +9,7 @@
         :class="{active: isOpen}"
       >
         <li class="header-link"><router-link class="header-link__item" to="/forecast">Погода</router-link></li>
-        <li class="header-link"><router-link class="header-link__item" to="/news">Новости</router-link></li>
+        <li class="header-link"><router-link class="header-link__item" to="/news">News</router-link></li>
         <li class="header-link"><router-link class="header-link__item" to="/about">О нас</router-link></li>
       </ul>
       <a href="mailto:jowe.jlexa@mail.ru" class="mail">alexey@mail.ru</a>
