@@ -12,7 +12,7 @@
         <li class="header-link"><router-link class="header-link__item" to="/news">Новости</router-link></li>
         <li class="header-link"><router-link class="header-link__item" to="/about">О нас</router-link></li>
       </ul>
-      <a href="mailto:jowe.jlexa@mail.ru" class="mail">jowe.jlexa@mail.ru</a>
+      <a href="mailto:jowe.jlexa@mail.ru" class="mail">alexey@mail.ru</a>
       <button
         class="hamburger-btn"
         :class="{active: isOpen}"
